@@ -1,11 +1,11 @@
+
 <?php
+session_start();
 
 require_once "datab.php";
-//require_once "hashtest.php";
-$username;
-$first_name;
-$last_name;
 
+
+//require_once "hashtest.php";
 class login
 {
 	private $password ;
@@ -28,6 +28,10 @@ class login
 
 		$this->sqlSelect();
 	}
+	public function getUsername()
+	{
+		return $this->username;
+	}
 	public function sqlSelect()
 	{
 		$sql = "SELECT * FROM users WHERE password = '$this->password'";
@@ -42,8 +46,14 @@ class login
 
 			if (isset($one['password']) && $this->password === $one['password']){
 				printf("Connection Established!");
-				printf("<br>Welcome %s %s",$one['firstname'], $one['lastname'] );
-				echo "<br><a href = 'home.html'>Home Page<a/>";
+
+				$first_name = $one['firstname'];
+				$last_name = $one['lastname'];
+				$_SESSION['username'] = $one['username'];
+
+				// printf("<br>Welcome %s %s",$first_name, $last_name );
+				// echo "<br><a href = 'home.php'>Home Page<a/>";
+				header("Location: home.php");
 			}
 			else
 				printf("Connection failed!");
@@ -60,3 +70,5 @@ class login
 }
 
 $login = new login($_POST['password'],$_POST['username'],$db);
+
+

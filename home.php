@@ -1,11 +1,19 @@
+<?php
+session_start();
+$user = $_SESSION['username']
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+	<title></title>
 </head>
 <body>
-<H1>Alumin Page</H1>
+<H1>Alumni  Page</H1>
+<H2> 
+Welcome 
+<?php echo $user?>
+</H2>
 <a href="logout.php">Logout</a>
 <a href="login.html">Login</a>
 <p>	Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.
@@ -33,3 +41,5 @@ Credibly reintermediate backend ideas for cross-platform models. Continually rei
 Distinctively exploit optimal alignments for intuitive bandwidth. Quickly coordinate e-business applications through revolutionary catalysts for change. Seamlessly underwhelm optimal testing procedures whereas bricks-and-clicks processes.</p>
 </body>
 </html>
+<?php
+if(!isset($_SESSION['username'])){echo "not set atm";}
