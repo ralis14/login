@@ -53,7 +53,7 @@ class login
 
 				// printf("<br>Welcome %s %s",$first_name, $last_name );
 				// echo "<br><a href = 'home.php'>Home Page<a/>";
-				header("Location: home.php");
+				header("Location: alumni.php");
 			}
 			else
 				printf("Connection failed!");
